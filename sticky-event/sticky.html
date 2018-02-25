@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>position: sticky events</title>
+  <link rel="stylesheet" type="text/css" href="./sticky.css">
+</head>
+
+<body>
+
+  <p class="nosupport">
+    Your browser does not support CSS
+    <code>position: sticky</code> or IntersectionObserver!
+  </p>
+
+  <header class="no-embed">
+    <h2>Know when sticky positioned elements are stuck.</h2>
+    <p>This page uses
+      <b>
+        <a href="https://developers.google.com/web/updates/2016/04/intersectionobserver" target="_blank">IntersectionObserver</a>
+      </b>
+      to fire an event when each header begins to stick, and vice versa.
+      <b>No scroll events</b> were harmed in the making of this demo.
+      <a href="https://developers.google.com/web/updates/2017/09/sticky-headers" target="_blank">Read more about it</a>.</p>
+  </header>
+
+  <p class="no-embed" style="text-align:center;font-style:italic;">Instructions: Scroll the container below...</p>
+  <p class="no-embed" style="text-align:center;font-style:italic;">Type '?embed' in your url if you need an embedded version.</p>
+
+  <div class="who_is_sticky">
+    <span>Sticking header:
+      <label>--</label>
+    </span>
+    <button onclick="toggleDebugMode()">Toggle debug mode</button>
+  </div>
+
+  <main>
+    <div id="container">
+      <template>
+        <div data-lorem="p">
+          <div class="sticky">
+            <h2 id=""></h2>
+          </div>
+          <div>Pulvinar mattis nunc sed blandit libero. Est lorem ipsum dolor sit. Non pulvinar neque laoreet suspendisse interdum
+            consectetur libero id faucibus. Condimentum mattis pellentesque id nibh tortor. Porttitor leo a diam sollicitudin
+            tempor. Eget magna fermentum iaculis eu non diam phasellus. Consequat interdum varius sit amet. Porttitor leo
+            a diam sollicitudin tempor id eu nisl. Diam maecenas sed enim ut sem viverra aliquet. A iaculis at erat pellentesque
+            adipiscing commodo elit. Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Nam aliquam sem et
+            tortor consequat id. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Nunc congue nisi
+          </div>
+        </div>
+      </template>
+    </div>
+    <aside id="toc">
+      <h3 class="toc-title">Table of contents</h3>
+      <ul>
+        <template>
+          <li class="toc-item">
+            <a href="#" onclick="scrollToHeader(this)"></a>
+            <ul>
+              <li>One</li>
+              <li>Two</li>
+              <li>Three</li>
+            </ul>
+          </li>
+        </template>
+      </ul>
+    </aside>
+  </main>
+
+  <script type="text/javascript" src="./sticky.js"></script>
+
+</body>
+
+</html>

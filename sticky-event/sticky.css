@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --default-padding: 16px;
+    --header-height: 80px;
+    --sticky-pos: 10px;
+}
+
+body {
+    margin: calc(var(--default-padding) * 2) auto;
+    line-height: 1.6;
+    color: #78909C;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    max-width: 1000px;
+    padding: 0 var(--default-padding);
+}
+
+body.debug .sticky_sentinel {
+    visibility: visible;
+    opacity: 0.8;
+    color: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.debug .sticky {
+    z-index: 1;
+}
+
+body.embed {
+    margin: 0;
+    max-width: initial;
+    padding: 0;
+}
+
+body.embed .no-embed {
+    display: none;
+}
+
+a {
+    color: inherit;
+}
+
+h2,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+    font-weight: 300;
+    color: #546E7A;
+}
+
+h2,
+h2 {
+    font-size: 28px;
+}
+
+#container {
+    overflow: auto;
+    will-change: transform;
+    /* make overflow fast on non-retina */
+    padding: var(--default-padding);
+    background-color: #ECEFF1;
+    scroll-behavior: smooth;
+}
+
+.sticky {
+    position: sticky;
+    top: var(--sticky-pos);
+    /* Sentinels adjust based on this position. */
+    height: var(--header-height);
+    background: #3A5E8C;
+    padding: 0 var(--default-padding);
+    display: flex;
+    align-items: center;
+}
+
+.sticky_sentinel {
+    background: yellow;
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* needs dimensions */
+    visibility: hidden;
+}
+
+.sticky_sentinel--top {
+    /* Adjust the height and top values based on your on your sticky top position.
+  e.g. make the height bigger and adjust the top so observeHeaders()'s
+  IntersectionObserver fires as soon as the bottom of the sentinel crosses the
+  top of the intersection container. */
+    height: 40px;
+    top: -24px;
+}
+
+.sticky_sentinel--bottom {
+    bottom: 0;
+    /* Height should match the top of the header when it's at the bottom of the
+  intersection container. */
+    height: calc(var(--header-height) + var(--default-padding));
+}
+
+[data-lorem] {
+    margin-bottom: calc(var(--default-padding) * 2);
+    text-align: justify;
+    padding: var(--default-padding);
+    position: relative;
+    /* contain the sentinels */
+    background-color: #fff;
+}
+
+[data-lorem] h2 {
+    color: #fff;
+}
+
+.nosupport {
+    color: darkred;
+    font-weight: bold;
+    display: none;
+    text-align: center;
+}
+
+.shadow {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+}
+
+.who_is_sticky {
+    padding-bottom: var(--default-padding);
+    display: flex;
+    justify-content: space-between;
+}
+
+.who_is_sticky label {
+    color: #607D8B;
+    font-weight: 500;
+}
+
+main {
+    display: flex;
+    height: 50vh;
+}
+
+#toc {
+    --indent: 8px;
+    background: #fff;
+    border: 1px solid #ECEFF1;
+    min-width: 200px;
+    padding: var(--default-padding) calc(var(--default-padding) + var(--indent));
+    overflow: auto;
+    font-size: 14px;
+}
+
+#toc ul {
+    margin: 0;
+    padding: 0;
+}
+
+#toc li {
+    list-style: none;
+}
+
+#toc .toc-item ul {
+    margin-left: var(--default-padding);
+    transition: height 150ms ease-in-out;
+    overflow: hidden;
+}
+
+.toc-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: calc(var(--default-padding) / 2);
+}
+
+#toc .toc-item a {
+    position: relative;
+    text-decoration: none;
+}
+
+#toc .toc-item.active a {
+    font-weight: bold;
+}
+
+#toc .toc-item.active h4::before {
+    content: '›';
+    position: absolute;
+    left: calc(-1 * var(--indent));
+    bottom: -3px;
+    font-size: 20px;
+}
+
+#toc .toc-item.active ul {
+    height: 70px;
+}
+
+#toc .toc-item ul {
+    height: 0;
+}
+
+header {
+    max-width: 700px;
+}
